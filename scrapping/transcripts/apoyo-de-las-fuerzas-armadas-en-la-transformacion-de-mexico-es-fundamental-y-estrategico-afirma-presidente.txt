@@ -1,0 +1,110 @@
+
+2022: Año de Ricardo Flores Magón, precursor de la Revolución Mexicana
+ 
+19/02/2022
+Al conmemorar el 109 Aniversario de la fundación del Ejército Mexicano, el presidente Andrés Manuel López Obrador destacó la lealtad de esta institución al pueblo y el apoyo que brindan para consolidar la Cuarta Transformación a través de las tareas de seguridad y desarrollo que llevan a cabo.
+“Con las Fuerzas Armadas ayudamos a la población afectada por huracanes, inundaciones, temblores, incendios y otros siniestros, y con ellas contenemos a la delincuencia organizada e impulsamos la reconstrucción de la paz en las regiones del país más afectadas por la violencia delictiva”, subrayó.
+
+
+En la Hacienda de Guadalupe, ubicada en Ramos Arizpe, Coahuila, el mandatario enlistó las actividades en las que participa el personal militar, como el cuidado de las instalaciones estratégicas, la construcción de obras de infraestructura, la contención del robo de hidrocarburos y el contrabando y la vigilancia de aduanas.
+Además, ha sido estratégica y fundamental la participación del personal de salud de las secretarías de la Defensa Nacional y de Marina en la logística de la distribución de dosis de vacunas para hacer frente a la pandemia de COVID-19.
+Recordó que al inicio de la actual administración se estableció en la Estrategia Nacional de Seguridad Pública la necesidad de reorientar la función de las Fuerzas Armadas.
+“Agregar a sus misiones constitucionales tradicionales la de participar en la construcción de la paz, particularmente con la creación de la Guardia Nacional, una institución que se fundó con el apoyo de todas las fuerzas políticas en el Congreso, de manera unánime, que cuenta ya con más de cien mil elementos y que actúa en todo el territorio nacional porque se han construido más de 250 cuarteles, lo que no se había hecho durante mucho tiempo para garantizar la seguridad de todos los mexicanos. En esa dirección hemos trabajado durante los últimos tres años; ya empiezan a notarse los resultados: está bajando la incidencia delictiva”, apuntó.
+El jefe del Ejecutivo explicó que el Ejército Mexicano surgió para oponerse al golpe de Estado que culminó con el asesinato del presidente Francisco I. Madero y del vicepresidente José María Pino Suárez, y para defender la democracia y la legalidad.
+“Las Fuerzas Armadas vienen de abajo y tienen como origen e identidad el México profundo; como sostengo siempre, el soldado es pueblo uniformado y por eso nunca traicionará a su gente y siempre será un defensor leal de la libertad, la justicia, la democracia y la soberanía nacional”, resaltó.
+El mandatario reafirmó su reconocimiento a la Sedena y la Marina, al general Luis Cresencio Sandoval González y al almirante José Rafael Ojeda Durán, por su proceder en bien del pueblo y de la nación.
+El presidente colocó una ofrenda floral y montó Guardia de Honor en el Obelisco de Venustiano Carranza.
+Atestiguó la entrega de condecoraciones, menciones honoríficas, distinciones y reconocimientos al personal del Ejército Mexicano que se destacó por su profesionalismo en operaciones dentro del territorio nacional, así como quienes desarrollaron proyectos de innovación científica y tecnológica que permitieron optimizar métodos de trabajo, y a quienes realizaron actividades administrativas en las Fuerzas Armadas de México.
+En el evento, el jefe del Ejecutivo estuvo acompañado por el gobernador de Coahuila, Miguel Ángel Riquelme Solís. Por parte del gobierno federal, estuvieron los secretarios de la Defensa Nacional, Luis Cresencio Sandoval González; de Marina, José Rafael Ojeda Durán; de Gobernación, Adán Augusto López Hernández; de Seguridad y Protección Ciudadana, Rosa Icela Rodríguez Velázquez; de Relaciones Exteriores, Marcelo Ebrard Casaubon; de Educación Pública, Delfina Gómez Álvarez y de la Función Pública, Roberto Salcedo Aquino.
+También el coordinador general de Comunicación Social y Vocero del Gobierno de la República, Jesús Ramírez Cuevas; la presidenta del Instituto Nacional de las Mujeres, Nadine Flora Gasman Zylbermann; el subsecretario de Egresos de la Secretaría de Hacienda y Crédito Público, Juan Pablo de Botton Falcón; el titular de la Agencia General de Aduanas en México, Horacio Duarte Olivares; el subsecretario de la Defensa Nacional, Agustín Radilla Suastegui; el subsecretario de Marina, José Luis Arellano Ruiz; el oficial mayor de la Sedena, Gabriel García Rincón y el comandante del Ejército Mexicano, Eufemio Alberto Ibarra Flores.
+Además, el oficial mayor de Marina, César Carlos Preciado Velázquez; el inspector y contralor general del Ejército y Fuerza Aérea, Arturo Pancardo Escudero; el jefe del Estado Mayor de la Defensa Nacional, Ricardo Trevilla Trejo; el inspector y contralor general de Marina, José Tomás Jorge Tress Zilly; el comandante de la Fuerza Aérea Mexicana, Gerardo Vega Rivera; el jefe del Estado Mayor General de la Armada, Juan José Padilla Olmos; el director general del Centro de Inteligencia, Audomaro Martínez Zapata; el comandante de la Guardia Nacional, Luis Rodríguez Bucio; el comandante de la XI Región Militar, Norberto Cortés Rodríguez; el comandante de la Región Aérea del Noreste, Bertín Hernández Mercado; el comandante de la 47/a Zona Militar, José Eduardo Torres Fausto; el presidente de la Mesa Directiva de la Cámara de Diputados, Sergio Carlos Gutiérrez Luna y el presidente municipal de Ramos Arizpe, José María Morales Padilla.
+
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 25%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Discurso del presidente Andrés Manuel López Obrador en el Día del Ejército Mexicano, desde Ramos Arizpe, Coahuila

@@ -1,0 +1,97 @@
+
+2020, Año de Leona Vicario, Benemérita Madre de la Patria
+ 
+25/07/2020
+Durante la inauguración del muelle de contenedores de la terminal de usos múltiples en el Puerto de Salina Cruz en Oaxaca, el presidente Andrés Manuel López Obrador anunció el nombramiento de la nueva titular de la Coordinación General de Puertos y Marina Mercante, Rosa Icela Rodríguez, que actualmente se desempeña como secretaria de Gobierno de la Ciudad de México.
+Indicó que una vez tomando posesión del cargo, indicó, el secretario de Marina, José Rafael Ojeda Durán, deberá recomendar a los almirantes que asumirán la administración y vigilancia de los puertos y aduanas marítimas del país.
+
+
+ 
+Como parte de las primeras propuestas, el mandatario informó que el almirante Salvador Gómez Mellón será el encargado de la Administración Portuaria Integral (API) de Manzanillo, Colima, y el Almirante Jorge Luis Cruz Vallarta de la API de Lázaro Cárdenas, Michoacán. En los próximos días se formalizarán los nombramientos.
+La modernización del Puerto de Salina Cruz, Oaxaca, es un proyecto multimodal que incluye obras de rehabilitación de los puertos de Coatzacoalcos y Salina Cruz; de la vía férrea del Istmo de Tehuantepec; de la carretera Transístmica; intervenciones en los aeropuertos de Ixtepec y Minatitlán; la terminación de la autopista de Mitla - Tehuantepec y la construcción de gasoductos para diez parques industriales que se construirán.
+Este año se realizarán los proyectos ejecutivos para el nuevo puerto comercial de la terminal marítima con la construcción de una escollera de 1,600 metros de largo para conformar el puerto de abrigo más profundo con 24 metros de calado que podrá albergar barcos para 18 mil contenedores y naves con capacidad de hasta 2 millones de barriles de combustibles, informó el director general del Corredor Interoceánico del Istmo de Tehuantepec (CIIT), Rafael Marín Mollinedo.
+
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 25%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+El muelle inaugurado de 123 metros tuvo un costo de 124 millones de pesos. Paralelamente comenzaron las obras del nuevo puerto petrolero y mercante en Salina Cruz con una inversión de 4 mil millones de pesos.
+“Se trata de lograr una comunicación moderna, efectiva, rentable en términos económicos y también para crear empleos y generar bienestar en toda esta región del país”, resaltó el presidente.
+El Aeropuerto Internacional General Felipe Ángeles, el Tren Maya y el Corredor Interoceánico del Istmo son proyectos de la actual administración para las que el presupuesto está garantizado aun con la epidemia de COVID-19.
+Acompañaron al presidente en este acto el gobernador de Oaxaca, Alejandro Murat Hinojosa; el secretario de Marina, José Rafael Ojeda Durán; el secretario de Comunicaciones y Transportes, Jorge Arganis Díaz Leal; la secretaria de Energía, Rocío Nahle García; el director general de Pemex, Octavio Romero Oropeza; el director general del Corredor Interoceánico del Istmo de Tehuantepec (CIIT), Rafael Marín Mollinedo; el jefe de la Unidad de Infraestructura y Transportes del CIIT, Herman Deutsch Espino; el director general de API Salina Cruz, Roberto Alfredo Mendoza Sánchez y el presidente municipal de Salina Cruz, Juan Carlos Atecas Altamirano.
+ 
+
+			#gallery-2 {
+				margin: auto;
+			}
+			#gallery-2 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 25%;
+			}
+			#gallery-2 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-2 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				Alejandro Murat, gobernador de Oaxaca
+				
+
+
+
+
+				Rafael Marín Mollinedo, Director General del Corredor Interoceánico del Istmo de Tehuantepec (CIIT)
+				
+
+

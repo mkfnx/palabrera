@@ -1,0 +1,78 @@
+
+
+ 
+De visita en el Hospital Rural Huetamo, en Michoacán, el presidente Andrés Manuel López Obrador expresó su solidaridad con los familiares de los seis mexicanos muertos y siete heridos a consecuencia del tiroteo de este sábado en El Paso, Texas, al tiempo que llamó a la unidad y la fraternidad universal.
+“Tenemos que buscar resolver nuestros problemas con fraternidad universal; serenar a los países, al mundo. Lograr la paz es lo más importante. Nada de armas destructivas. Amarnos unos a otros, no odiarnos, hacer a un lado la discordia y buscar siempre la unidad de todos los seres humanos. Abrazos, no balazos. Esa es nuestra postura”, expresó
+
+
+Indicó que los gobernadores de los estados donde son originarias las víctimas ya están enterados para que proporcionen ayuda a los familiares y adelantó que el secretario de Relaciones Exteriores, Marcelo Ebrard, fijará la postura del Gobierno de México ante estos hechos que calificó como lamentables.
+“Le hemos pedido que a pesar del dolor y la indignación, actuemos con mucha responsabilidad. En Estados Unidos hay un proceso electoral y no queremos inmiscuirnos en asuntos internos de otros países”, subrayó.
+Agregó que México mantendrá los principios de no intervención y autodeterminación de los pueblos.
+“Desde luego lamentamos lo sucedido y reafirmamos nuestra convicción de que no deben enfrentarse los problemas con el uso de la fuerza, con la incitación al odio”, enfatizó.
+El jefe del Ejecutivo se comprometió a mejorar el sistema de salud para que no falten medicamentos, equipo, médicos y enfermeros; a pagar mejores sueldos a especialistas que laboren en zonas alejadas y a basificar a todo el personal antes de que termine el sexenio, además de optimizar la infraestructura hospitalaria.
+El presidente ya suma 26 recorridos de los 80 que hará en hospitales del programa IMSS Bienestar acompañado del Gabinete de Salud. En el de Huetamos reiteró que este sector y el educativo presentan importantes rezagos.
+
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 25%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+En materia de ‘Programas Integrales de Bienestar’, informó que la entrega de pensiones a adultos mayores tiene un avance del 86 por ciento con 4 mil 384 recibidas de una meta de 5 mil 96.
+El mismo monto de 2 mil 550 pesos bimestrales se otorga a 294 menores con discapacidad de esta región.
+Sobre las becas expuso que mil 718 estudiantes de nivel básico acceden al beneficio, así como mil 131 alumnos de bachillerato y 174 universitarios.
+En Huetamo 485 mujeres y hombres de 18 a 29 años están siendo contratados como aprendices en ‘Jóvenes Construyendo el Futuro’, mientras que mil 803 productores reciben apoyos de ‘Producción para el Bienestar’.
+El presidente indicó que desde el gobierno federal se destinó presupuesto para terminar la presa Huetamo.
+“Ya inició la obra de sistemas de riego y trabajamos para que a finales de este año quede concluida en beneficio de los productores de esta región”, precisó.
+Agregó que con el gobierno de Michoacán, encabezado por Silvano Aureoles, llegará a un acuerdo para que sea el primer estado donde inicie la federalización de la educación.
+“Los maestros en nómina estatal no pueden cobrar porque no se transfieren los fondos suficientes. Ahora que inició el periodo vacacional, que se terminó el ciclo escolar, a los federales se les pagan tres o cuatro quincenas y a los estatales apenas una. Eso es lo que vamos a resolver”, afirmó.
+Sostuvo que se lleva a cabo un censo para verificar escuela por escuela a cada maestro “porque ya no se admiten aviadores. Nada de cobrar sin trabajar”.

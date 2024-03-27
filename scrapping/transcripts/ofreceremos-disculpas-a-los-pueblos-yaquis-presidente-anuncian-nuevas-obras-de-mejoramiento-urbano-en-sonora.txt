@@ -1,0 +1,81 @@
+
+2020, Año de Leona Vicario, Benemérita Madre de la Patria
+ 
+04/10/2020
+El presidente Andrés Manuel López Obrador reafirmó que durante la conmemoración en 2021 de los 700 años de la fundación de México-Tenochtitlán, los 500 años de invasión extranjera y los 200 años de Independencia de México, se dedicará un día a ofrecer disculpas a los pueblos yaquis.
+“El año próximo estaremos con los yaquis (...) vamos a pedir perdón en nombre del Estado mexicano para que nunca más se repita la represión, que no se cometan atrocidades bajo ningún pretexto ni excusa”, subrayó.
+En el último día de gira de trabajo por el norte del país encabezó el anuncio de nuevas obras en beneficio de los habitantes de Hermosillo, Sonora.
+
+
+El titular de la Secretaría de Desarrollo Agrario, Urbano y Territorial (Sedatu), Román Meyer Falcón, informó que a través del Programa de Mejoramiento Urbano se invertirán mil 700 millones de pesos en Sonora. Los proyectos generarán alrededor de 15 mil empleos.
+Mil 700 familias yaquis tendrán mejoras en sus viviendas; se realizarán 39 obras urbanas, entre las que destacan la Universidad de la Nación Yaqui, centros de salud, centros culturales y espacios deportivos.
+A lo largo de la frontera en Agua Prieta y Naco, se llevarán a cabo diez obras de mejoramiento urbano y 200 familias accederán a vivienda. En Cajeme y Hermosillo se invertirán 500 millones de pesos en cada municipio a través del programa.
+Asimismo, en Hermosillo, la Sedatu intervendrá 31 avenidas, construirá el parque biocultural Cerro de la Campana y mejorará el espacio público. Más de 700 familias en colonias populares se beneficiarán con acciones de vivienda.
+Por último, el secretario anunció la remodelación de los estadios Héctor Espino en Hermosillo y Tomás Oroz Gaytán en Ciudad Obregón.
+El primer mandatario celebró la compra de los estadios, inversión que significa más recursos para los municipios, y recordó que junto con las escuelas de béisbol serán espacios para la práctica deportiva de los jóvenes sonorenses.
+Resaltó que en el país habrá cinco escuelas béisbol en Campeche, Veracruz, Texcoco y dos en Sonora en las cuales los jóvenes podrán estudiar una carrera técnica relacionada con el deporte acreditada por la SEP con derecho a becas.
+El jefe del Ejecutivo refrendó su compromiso de apoyar a Sonora en materia de seguridad y recordó que hay 2 mil elementos de la Guardia Nacional desplegados en la entidad.
+Acompañaron al presidente, la gobernadora de Sonora, Claudia Pavlovich Arellano; el secretario de la Defensa Nacional, Luis Cresencio Sandoval González; el secretario de Marina, José Rafael Ojeda Duran; el secretario de Seguridad y Protección Ciudadana, Alfonso Durazo Montaño; la presidenta municipal de Hermosillo, Célida Teresa López Cárdenas y el director de la Oficina de la Presidencia para la Promoción y el Desarrollo del Béisbol en México, Édgar González Sabín.
+
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 20%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
