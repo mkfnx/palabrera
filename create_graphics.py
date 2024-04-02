@@ -1,4 +1,6 @@
+import json
 import os
+
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from stopwords import stopwords
@@ -6,6 +8,7 @@ from stopwords_complement import default_stopwords_complement
 
 TRANSCRIPTS_PATH = './scrapping/transcripts/'
 FREQUENCY_MAPS_PATH = 'public/graphs/frequency_maps/'
+TOP_WORDS_PATH = 'public/graphs/top_words/'
 WORD_CLOUDS_PATH = 'public/graphs/wordclouds/'
 BAR_CHARTS_PATH = 'public/graphs/barcharts/'
 
@@ -60,15 +63,31 @@ def word_cloud_with_stopwords(stopwords_complement=None):
 
 
 def save_frequency_map(save_path, file_name, frequency_map):
-    with open(f'{save_path}{file_name}', 'w') as f:
-        f.write(str(frequency_map))
+    new_file_name = file_name.replace('.txt', '.json')
+    with open(f'{save_path}{new_file_name}', 'w', encoding='utf-8') as f:
+        f.write(json.dumps(frequency_map, ensure_ascii=False))
 
 
-def create_outputs():
-    wordcloud = word_cloud_with_stopwords()
+def save_top_words(save_path, file_name, frequency_map):
+    sorted_frequencies = sorted(frequency_map.items(), key=lambda x: x[1], reverse=True)
+    top_words_list = []
+    for i in range(10):
+        top_words_list.append(sorted_frequencies[i][0])
 
-    # transcripts = os.listdir(TRANSCRIPTS_PATH)
-    transcripts = ['2024-03-27.txt']
+    new_file_name = file_name.replace('.txt', '.json')
+    with open(f'{save_path}{new_file_name}', 'w', encoding='utf-8') as f:
+        f.write(json.dumps(top_words_list, ensure_ascii=False))
+
+
+def create_outputs(transcripts, stopwords_complement=None):
+    """
+    Create charts (bar chart and word cloud) for each of the transcripts in the transcript list param
+    :param transcripts: List of transcript filenames
+    :param stopwords_complement: List of additional stopwords to be excluded
+    :return: None.
+    """
+    wordcloud = word_cloud_with_stopwords(stopwords_complement)
+
     print(f'generate graphs for {len(transcripts)} transcripts')
 
     for i, transcript_file_name in enumerate(transcripts):
@@ -81,6 +100,7 @@ def create_outputs():
             word_frequencies = wordcloud.process_text(text)
 
             save_frequency_map(FREQUENCY_MAPS_PATH, transcript_file_name, word_frequencies)
+            save_top_words(TOP_WORDS_PATH, transcript_file_name, word_frequencies)
 
             file_name = transcript_file_name.replace('.txt', '.png')
             save_wordcloud(wordcloud, word_frequencies, WORD_CLOUDS_PATH, file_name)
@@ -90,4 +110,7 @@ def create_outputs():
 
 
 if __name__ == "__main__":
-    create_outputs()
+    # create_outputs(['2024-04-01.txt'], ['cuevas', 'mujer'])
+    create_outputs(
+        os.listdir(TRANSCRIPTS_PATH)
+    )

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es-mx" data-bs-theme="dark">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="/js/color-modes.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Visualizaciones de las palabras más mencionadas en las mañaneras, las conferencias de prensa del presidente de México, Andrés Manuel López Obrador (AMLO)">
+    <meta name="keywords" content="Mañanera, AMLO, Conferencia Presidente, Visualización de Datos, Nube de Palabras">
+    <meta name="author" content="Miguel López @mkfnx">
+    <title>Palabrera - Visualización de las palabras más usadas en las conferencias del presidente de México</title>
+
+
+    <link rel="stylesheet" href="/css/css@3">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/jumbotron.css">
+
+    <meta name="theme-color" content="#712cf9">
+
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+    </symbol>
+</svg>
+
+<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+            id="bd-theme"
+            type="button"
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+            <use href="#circle-half"></use>
+        </svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                    aria-pressed="false">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#sun-fill"></use>
+                </svg>
+                Light
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                    aria-pressed="false">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#moon-stars-fill"></use>
+                </svg>
+                Dark
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                    aria-pressed="true">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#circle-half"></use>
+                </svg>
+                Auto
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+    </ul>
+</div>
+
+<main>
+    <div class="container py-4">
+        <nav class="navbar navbar-expand-lg bg-light-subtle">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Palabrera - Mañanera en Palabras</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link active" href="/conferencias_diarias">Conferencias diarias</a>
+                        <a class="nav-link" href="/sobre_este_sitio">Sobre este sitio</a>
+                        <a class="nav-link" href="/autor">Autor</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="px-4 my-4 text-center">
+            <h3 class="display-6 fw-bold">¿De qué temas se habla en la mañanera?</h3>
+            <div class="col-lg-10 mx-auto">
+                <p class="mb-4">
+                    Este sitio usa un par de sencillas visualizaciones de datos para mostrar las palabras más
+                    mencionadas en
+                    la conferencia del presidente de México, Andrés Manuel López Obrador.
+                </p>
+
+                <p class="mb-4">
+                    Esto incluye tanto lo dicho por el presidente como por otros funcionarios, así como las preguntas de
+                    reporteros.
+                </p>
+            </div>
+        </div>
+
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <h2 id="date-header" class="display-6 fw-bold"></h2>
+
+            <div class="col-md-6 container-fluid">
+                <div class="col-auto mb-3">
+                    <label for="transcript-date" class="form-label">Selecciona la fecha de la conferencia que
+                        quieres ver:</label>
+                    <input id="transcript-date" type="date" class="form-control" name="fecha">
+                </div>
+                <div class="col-auto">
+                    <button id="visualize-conference-btn" type="button" class="btn btn-primary">Visualizar</button>
+                </div>
+            </div>
+
+            <div class="row align-items-md-stretch">
+                <div class="col-md-6 container-fluid">
+                    <div class="h-100 p-5 text-bg-tertiary rounded-3">
+                        <h2>Nube de Palabras</h2>
+                        <div id="wordcloud-loader" class="d-flex justify-content-center align-items-center"
+                             style="min-height: 480px">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <img id="wordcloud" class="img-fluid" alt="Nube de palabras de la conferencia" hidden>
+                    </div>
+                </div>
+                <div class="col-md-6 container-fluid">
+                    <div class="h-100 p-5 text-bg-tertiary rounded-3">
+                        <h2>Gráfica de Barras</h2>
+                        <div id="barchart-loader" class="d-flex justify-content-center align-items-center"
+                             style="min-height: 480px">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <img id="barchart" class="img-fluid" alt="Gráfica de barras de la conferencia" hidden>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid py-5">
+                <p id="top-words-list">[Cargando palabras más mencionadas...]</p>
+
+                <p id="title">
+                    [Cargando Título de Conferencia...]
+                </p>
+
+                <p>
+                    <a id="url"></a>
+                </p>
+            </div>
+        </div>
+
+        <h2 class="text-center">Ver datos de otra conferencia</h2>
+        <div class="row align-items-md-stretch">
+            <!--            <div class="col-md-6 container-fluid">-->
+            <!--                <div class="h-100 p-5 text-bg-tertiary rounded-3">-->
+            <!--                    <form class="my-3" method="GET">-->
+            <!--                        <div>-->
+            <!--                            <a id="prev-day-btn" class="btn btn-primary">Ver día anterior</a>-->
+            <!--                            <a id="next-day-btn" class="btn btn-primary">Ver día siguiente</a>-->
+            <!--                        </div>-->
+            <!--                    </form>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="col-md-6 container-fluid">
+                <div class="h-100 p-5 text-bg-tertiary rounded-3">
+                    <div class="col-auto mb-3">
+                        <label for="transcript-date-2" class="form-label">Selecciona la fecha de la conferencia que
+                            quieres visualizar:</label>
+                        <input id="transcript-date-2" type="date" class="form-control" name="fecha">
+                    </div>
+                    <div class="col-auto">
+                        <button id="visualize-conference-btn-2" type="button" class="btn btn-primary">Visualizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">¿Para qué sirve esto?</h3>
+            <div class="col-lg-10 mx-auto">
+                <p class="lead mb-4">
+                    Para identificar rápidamente los temas tratados en las mañaneras del presidente AMLO.
+                </p>
+                <p class="lead mb-4">
+                    Las visualizaciones mostradas son herramientas muy sencillas de exploración de datos. Para obtener
+                    información completa sobre los temas mencionados en las conferencias se recomienda visitar la fuente
+                    de las mismas, debajo de las gráficas puedes encontrar el enlace a la transcripción oficial de cada
+                    conferencia.
+                </p>
+                <p class="lead mb-4">
+                    Puedes obtener más información sobre temas de análisis y visualización
+                    de datos en las siguientes fuentes:
+                </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="https://en.wikipedia.org/wiki/Tag_cloud">Nubes de Palabras -
+                        Wikipedia en inglés</a></li>
+                    <li class="list-group-item"><a href="https://en.wikipedia.org/wiki/Topic_model">Topic Modeling -
+                        Wikipedia en inglés</a></li>
+                    <li class="list-group-item"><a href="https://tagcrowd.com/faq.html#whatis">TagCrowd - Generador y
+                        ejemplos de nubes de palabras</a></li>
+                    <li class="list-group-item"><a href="https://www.tiktok.com/@mkfnx">Mi Cuenta de TikTok</a></li>
+                    <li class="list-group-item"><a href="https://beacons.ai/mkfnx">Mi página de enlaces recomendados</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="pt-3 mt-4 text-body-secondary border-top">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="/aviso_de_privacidad" class="nav-link px-2 text-muted">Aviso de Privacidad</a></li>
+                <li class="nav-item"><a href="https://forms.gle/pt7wmwi5ZS12Nq979" class="nav-link px-2 text-muted">Contacto</a>
+                </li>
+            </ul>
+            <p class="text-center text-muted">© Palabrera - Mañanera en Palabras 2024</p>
+        </footer>
+    </div>
+</main>
+<script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<script src="/js/posthog.js"></script>
+
+<script type="module">
+    import data from "/transcripts_data.json" with {type: 'json'};
+
+    let dateStr = null;
+
+    document.getElementById("transcript-date").addEventListener("change", syncSelectedDate);
+    document.getElementById("transcript-date-2").addEventListener("change", syncSelectedDate);
+
+    document.getElementById("visualize-conference-btn").addEventListener("click", navigateToSelectedDate);
+    document.getElementById("visualize-conference-btn-2").addEventListener("click", navigateToSelectedDate);
+
+    function syncSelectedDate(event) {
+        dateStr = event.target.value;
+        document.getElementById("transcript-date").value = dateStr;
+        document.getElementById("transcript-date-2").value = dateStr;
+    }
+
+    function navigateToSelectedDate(event) {
+        window.location = "/conferencias_diarias/" + dateStr;
+    }
+
+    function getTopWords() {
+        const topWordsPath = "/graphs/top_words/" + dateStr + ".json";
+        console.log("will fetch: " + topWordsPath);
+
+        fetch(topWordsPath)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("top-words-list").innerHTML =
+                    "<strong>Palabras más mencionadas: </strong>" + data.join(", ");
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    window.onload = function () {
+        const imgDir = "/graphs/";
+        const wordCloudDir = imgDir + "wordclouds/";
+        const barChartDir = imgDir + "barcharts/";
+
+        console.log("window.location: " + window.location);
+
+        const pathNameParts = window.location.pathname.split('/');
+        if (pathNameParts.length === 3 && pathNameParts[1] === "conferencias_diarias") {
+            dateStr = pathNameParts[2];
+        }
+
+        if (dateStr === null) {
+            let date = new Date("2024-04-01");
+            dateStr = date.toISOString().split('T')[0];
+
+            const oneDayMillis = 86400000;
+            const maxPreviousDays = 7;
+            let previousDays = 0;
+            while (data[dateStr] === undefined || previousDays === maxPreviousDays) {
+                date = new Date(date.getTime() - oneDayMillis);
+                dateStr = date.toISOString().split('T')[0];
+                previousDays++;
+            }
+        }
+
+        let conferenceData = data[dateStr];
+        if (conferenceData === undefined) {
+            alert("No se encontraron datos para la fecha seleccionada. Seleccione otra");
+            return;
+        }
+
+        conferenceData = conferenceData[0] // TODO: Handle multiple conferences in one day
+
+        const date = new Date(dateStr + "T00:00:00.000-06:00");
+        const prettyDate = date.toLocaleDateString("es-mx", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        });
+        document.getElementById("date-header").textContent = "Mañanera del " + prettyDate;
+        document.getElementById("transcript-date").value = dateStr;
+        document.getElementById("transcript-date-2").value = dateStr;
+        document.getElementById("top-words-list").innerHTML = "<strong>Palabras más mencionadas: </strong>" + getTopWords();
+        document.getElementById("title").innerHTML = "<strong>Título: </strong>" + conferenceData.title;
+        document.getElementById("url").textContent = conferenceData.url;
+        document.getElementById("url").href = conferenceData.url;
+
+        const wordCloud = document.getElementById('wordcloud');
+        const wordCloudLoader = document.getElementById('wordcloud-loader');
+        const barChart = document.getElementById('barchart');
+        const barChartLoader = document.getElementById('barchart-loader');
+
+        wordCloud.onload = function () {
+            wordCloudLoader.classList.add("visually-hidden");
+            wordCloud.hidden = false;
+        };
+        barChart.onload = function () {
+            barChartLoader.classList.add("visually-hidden");
+            barChart.hidden = false;
+        };
+
+        wordCloud.src = wordCloudDir + dateStr + ".png";
+        barChart.src = barChartDir + dateStr + ".png";
+    };
+</script>
+</body>
+</html>

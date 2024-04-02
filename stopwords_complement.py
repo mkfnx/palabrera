@@ -67,5 +67,9 @@ default_stopwords_complement = {
     'decir',
     'dice',
     'dan',
-    'ah'
+    'ah',
+    'hombre',
+    'jesús',
+    'ramírez',
+    'jesús ramírez'
 }

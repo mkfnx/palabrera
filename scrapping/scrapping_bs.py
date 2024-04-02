@@ -39,7 +39,12 @@ def parse_article(url):
     }
 
 
-def parse_page_articles(url):
+def get_page_articles(url):
+    """
+
+    :param url: Url of the page to extract the articles from; A page number of the transcripts base URL.
+    :return: list of BeautifulSoup article tags contained in the page
+    """
     page_request = requests.get(url, headers=headers)
     page_html = page_request.text
     page_soup = bs4.BeautifulSoup(page_html, 'html.parser')
@@ -107,7 +112,7 @@ def scrap_all_conferences():
         page_url = f'{BASE_URL}{page_number}'
         print(page_url)
 
-        articles_info = get_transcripts_data(parse_page_articles(page_url))
+        articles_info = get_transcripts_data(get_page_articles(page_url))
         transcripts_by_date_dict.update(articles_info)
 
     with open('transcripts_by_date3.json', 'w') as f:
@@ -115,7 +120,12 @@ def scrap_all_conferences():
         json.dump(transcripts_by_date_dict, f)
 
 
-def parse_articles(articles):
+def save_articles(articles):
+    """
+    Save article contents to the file system
+    :param articles: list of BeautifulSoup article tags contained in the page
+    :return: None. Articles get saved to the file system in the predefined path (./scrapping/transcripts)
+    """
     for i in range(len(articles), 0, -1):
         article_url = articles[i - 1].a.attrs['href']
         article_info = parse_article(article_url)
@@ -133,6 +143,6 @@ def parse_articles(articles):
 
 
 if __name__ == '__main__':
-    parse_articles(
-        parse_page_articles(f'{BASE_URL}1')
+    save_articles(
+        get_page_articles(f'{BASE_URL}1')
     )

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es-mx" data-bs-theme="dark">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="js/color-modes.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Visualizaciones de las palabras más mencionadas en las mañaneras, las conferencias de prensa del presidente de México, Andrés Manuel López Obrador (AMLO)">
+    <meta name="keywords" content="Mañanera, AMLO, Conferencia Presidente, Visualización de Datos, Nube de Palabras">
+    <meta name="author" content="Miguel López @mkfnx">
+    <title>Palabrera - Visualización de las palabras más usadas en las conferencias del presidente de México</title>
+
+
+    <link rel="stylesheet" href="/css/css@3">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/jumbotron.css">
+
+    <meta name="theme-color" content="#712cf9">
+
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+    </symbol>
+</svg>
+
+<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+            id="bd-theme"
+            type="button"
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+            <use href="#circle-half"></use>
+        </svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                    aria-pressed="false">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#sun-fill"></use>
+                </svg>
+                Light
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                    aria-pressed="false">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#moon-stars-fill"></use>
+                </svg>
+                Dark
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                    aria-pressed="true">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#circle-half"></use>
+                </svg>
+                Auto
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+    </ul>
+</div>
+
+<main>
+    <div class="container py-4">
+        <nav class="navbar navbar-expand-lg bg-light-subtle">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Palabrera - Mañanera en Palabras</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link" href="/conferencias_diarias">Conferencias diarias</a>
+                        <a class="nav-link" href="/sobre_este_sitio">Sobre este sitio</a>
+                        <a class="nav-link active" href="/autor">Autor</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="px-4 my-4">
+            <article class="page">
+
+                <h1>Aviso de Privacidad Integral</h1>
+
+                <div class="entry">
+                    <h3 id="quiénes-somos">¿Quiénes somos?</h3>
+                    <p>Palabrera.info es operado por Miguel López, con domicilio en calle Gral. Mariano Escobedo, Ciudad
+                        de México, México, es responsable del uso y protección de sus datos personales y al respecto le
+                        informamos lo siguiente:</p>
+
+                    <h3 id="para-qué-fines-utilizaremos-sus-datos-personales">¿Para qué fines utilizaremos sus datos
+                        personales?</h3>
+                    <ul>
+                        <li>Análisis de funcionalidad del producto</li>
+                        <li>Mercadotecnia o publicitaria</li>
+                    </ul>
+
+                    <p>La aceptación del aviso de privacidad es necesaria para el uso del producto. El uso de cualquiera
+                        de los productos es una aceptación implícita de este aviso de privacidad.</p>
+
+                    <h3 id="qué-datos-personales-utilizaremos-para-estos-fines">¿Qué datos personales utilizaremos para
+                        estos fines?</h3>
+                    <p>Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los
+                        siguientes datos personales:</p>
+                    <ul>
+                        <li>Ubicación geográfica aproximada a nivel regional</li>
+                    </ul>
+
+                    <h3 id="con-quién-compartimos-su-información-personal-y-para-qué-fines">¿Con quién compartimos su
+                        información personal y para qué fines?</h3>
+                    <p>Le informamos que sus datos personales son compartidos fuera del país con las siguientes
+                        personas, empresas, organizaciones o autoridades distintas a nosotros, para los siguientes
+                        fines:</p>
+
+                    <p>Destinatario de los datos personales - Finalidad - Requiere del consentimiento</p>
+                    <ul>
+                        <li>Google - Publicidad y análisis de funcionalidades del producto - No</li>
+                        <li>PostHog - Análisis de funcionalidades del producto - No</li>
+                    </ul>
+
+                    <h3 id="cómo-puede-acceder-rectificar-o-cancelar-sus-datos-personales-u-oponerse-a-su-uso">¿Cómo
+                        puede acceder, rectificar o cancelar sus datos personales, u oponerse a su uso?</h3>
+                    <p>Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y
+                        las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección
+                        de su información personal en caso de que esté desactualizada, sea inexacta o incompleta
+                        (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que
+                        la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus
+                        datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos
+                        ARCO.</p>
+
+                    <p>Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud
+                        respectiva a través del siguiente medio:</p>
+
+                    <p>Información de contacto digital mostrada en el sitio web del creador de los productos</p>
+
+                    <p>Con relación al procedimiento y requisitos para el ejercicio de sus derechos ARCO, le informamos
+                        lo siguiente:</p>
+
+                    <p>a) ¿A través de qué medios pueden acreditar su identidad el titular y, en su caso, su
+                        representante, así como la personalidad este último?
+                        Identificación oficial y datos de cuentas operadas por el creador del servicio y que estén
+                        vinculadas a la persona que acredita la identificación oficial.</p>
+
+                    <p>b) ¿Qué información y/o documentación deberá contener la solicitud?
+                        Identificación oficial y descripción detallada de la solicitud</p>
+
+                    <p>c) ¿En cuántos días le daremos respuesta a su solicitud?
+                        30 días</p>
+
+                    <p>d) ¿Por qué medio le comunicaremos la respuesta a su solicitud?
+                        Correo electrónico</p>
+
+                    <p>e) ¿En qué medios se pueden reproducir los datos personales que, en su caso, solicite?
+                        Digitales</p>
+
+                    <p>Los datos de contacto de la persona o departamento de datos personales, que está a cargo de dar
+                        trámite a las solicitudes de derechos ARCO, son los siguientes:</p>
+
+                    <p>a) Nombre de la persona o departamento de datos personales: Miguel Lopez</p>
+
+                    <p>b) Domicilio: Calle Gral. Mariano Escobedo, Ciudad de México, México.</p>
+
+                    <p>Usted puede revocar su consentimiento para el uso de sus datos personales</p>
+
+                    <p>Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de
+                        sus datos personales. Sin embargo, es importante que tenga en cuenta que no en todos los casos
+                        podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por
+                        alguna obligación legal requiramos seguir tratando sus datos personales. Asimismo, usted deberá
+                        considerar que para ciertos fines, la revocación de su consentimiento implicará que no le
+                        podamos seguir prestando el servicio que nos solicitó, o la conclusión de su relación con
+                        nosotros.</p>
+
+                    <p>Para revocar su consentimiento deberá presentar su solicitud a través del siguiente medio:
+                        Información de contacto digital mostrada en el sitio web del creador de los productos</p>
+
+                    <p>Con relación al procedimiento y requisitos para la revocación de su consentimiento, le informamos
+                        lo siguiente:</p>
+
+                    <p>a) ¿A través de qué medios pueden acreditar su identidad el titular y, en su caso, su
+                        representante, así como la personalidad este último?
+                        Medios digitales que permitan el envío de documentación que pueda acreditar e identificar al
+                        titular</p>
+
+                    <p>b) ¿Qué información y/o documentación deberá contener la solicitud?
+                        Identificación oficial, información sobre cuentas operadas por el operador del servicio y que
+                        estén vinculadas a la identificación que acredita al titular y descripción detallada de la
+                        solicitud y correo electrónico</p>
+
+                    <p>c) ¿En cuántos días le daremos respuesta a su solicitud?
+                        30 días</p>
+
+                    <p>d) ¿Por qué medio le comunicaremos la respuesta a su solicitud?
+                        Correo electrónico</p>
+
+                    <h3 id="cómo-puede-limitar-el-uso-o-divulgación-de-su-información-personal">¿Cómo puede limitar el
+                        uso o divulgación de su información personal?</h3>
+                    <p>Con objeto de que usted pueda limitar el uso y divulgación de su información personal, le
+                        ofrecemos los siguientes medios:</p>
+
+                    <p>Presentar solicitud descrita en las secciones anteriores</p>
+
+                    <p>El uso de tecnologías de rastreo en nuestro portal de internet</p>
+
+                    <p>Le informamos que en nuestra página de internet utilizamos cookies, web beacons u otras
+                        tecnologías, a través de las cuales es posible monitorear su comportamiento como usuario de
+                        internet, así como brindarle un mejor servicio y experiencia al navegar en nuestra página. Los
+                        datos personales que recabamos a través de estas tecnologías, los utilizaremos para los
+                        siguientes fines:</p>
+
+                    <ul>
+                        <li>Análisis de funcionalidad del producto</li>
+                        <li>Publicidad</li>
+                    </ul>
+
+                    <p>Los datos personales que obtenemos de estas tecnologías de rastreo son los siguientes:</p>
+
+                    <ul>
+                        <li>Idioma preferido por el usuario</li>
+                        <li>Región en la que se encuentra el usuario</li>
+                        <li>Tipo de navegador del usuario</li>
+                        <li>Tipo de sistema operativo del usuario</li>
+                    </ul>
+
+                    <p>Asimismo, le informamos que su información personal será compartida con las siguientes personas,
+                        empresas, organizaciones o autoridades distintas a nosotros, para los siguientes fines:</p>
+
+                    <p>Destinatario de los datos personales - Finalidad</p>
+                    <ul>
+                        <li>Google: Publicidad y análisis de funcionalidad del producto</li>
+                        <li>PostHog: Análisis de funcionalidad del producto</li>
+                    </ul>
+
+                    <p>Estas tecnologías podrán deshabilitarse siguiendo los siguientes pasos: Modificar la
+                        configuración de su dispositivo para desactivar las tecnologías correspondientes..</p>
+
+                    <h3 id="cómo-puede-conocer-los-cambios-en-este-aviso-de-privacidad">¿Cómo puede conocer los cambios
+                        en este aviso de privacidad?</h3>
+                    <p>El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas
+                        de nuevos requerimientos legales; de nuestras propias necesidades por los productos o servicios
+                        que ofrecemos; de nuestras prácticas de privacidad; de cambios en nuestro modelo de negocio, o
+                        por otras causas.</p>
+
+                    <p>Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el presente aviso de
+                        privacidad, a través de: Avisos mostrados durante el uso del producto.</p>
+
+                    <p>El procedimiento a través del cual se llevarán a cabo las notificaciones sobre cambios o
+                        actualizaciones al presente aviso de privacidad es el siguiente: Avisos mostrados durante el uso
+                        del producto</p>
+
+                    <p>Última actualización: 01/04/2024</p>
+
+                </div>
+            </article>
+        </div>
+
+
+        <footer class="pt-3 mt-4 text-body-secondary border-top">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="/aviso_de_privacidad" class="nav-link px-2 text-muted">Aviso de Privacidad</a></li>
+                <li class="nav-item"><a href="https://forms.gle/pt7wmwi5ZS12Nq979" class="nav-link px-2 text-muted">Contacto</a>
+                </li>
+            </ul>
+            <p class="text-center text-muted">© Palabrera - Mañanera en Palabras 2024</p>
+        </footer>
+    </div>
+</main>
+<script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<script src="/js/posthog.js"></script>
+
+<script type="module">
+</script>
+</body>
+</html>
