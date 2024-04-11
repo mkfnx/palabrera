@@ -132,6 +132,8 @@ def save_articles(articles):
 
         file_name, file_path = get_file_paths(article_url, article_info)
 
+        # TODO compare contents to decide if a new file should be created
+        #  (this is the case when there's more than conference in one day)
         # if os.path.exists(file_path):
         #     file_name = get_new_name_for_duplicated(file_name)
         #     date_key = file_name[file_path.find('_')]

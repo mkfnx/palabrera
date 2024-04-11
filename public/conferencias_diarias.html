@@ -10,7 +10,7 @@
           content="Visualizaciones de las palabras más mencionadas en las mañaneras, las conferencias de prensa del presidente de México, Andrés Manuel López Obrador (AMLO)">
     <meta name="keywords" content="Mañanera, AMLO, Conferencia Presidente, Visualización de Datos, Nube de Palabras">
     <meta name="author" content="Miguel López @mkfnx">
-    <title>Palabrera - Visualización de las palabras más usadas en las conferencias del presidente de México</title>
+    <title>Palabrera - Conferencias Diarias</title>
 
 
     <link rel="stylesheet" href="/css/css@3">
@@ -105,6 +105,7 @@
                     <div class="navbar-nav">
                         <a class="nav-link" aria-current="page" href="/">Inicio</a>
                         <a class="nav-link active" href="/conferencias_diarias">Conferencias diarias</a>
+                        <a class="nav-link" href="/busqueda">Búsqueda</a>
                         <a class="nav-link" href="/sobre_este_sitio">Sobre este sitio</a>
                         <a class="nav-link" href="/autor">Autor</a>
                     </div>
@@ -116,14 +117,15 @@
             <h3 class="display-6 fw-bold">¿De qué temas se habla en la mañanera?</h3>
             <div class="col-lg-10 mx-auto">
                 <p class="mb-4">
-                    Este sitio usa un par de sencillas visualizaciones de datos para mostrar las palabras más
-                    mencionadas en
-                    la conferencia del presidente de México, Andrés Manuel López Obrador.
+                    Este sitio usa visualizaciones de datos sencillas para mostrar las palabras más mencionadas en la
+                    conferencia del presidente de México, Andrés Manuel López Obrador.
                 </p>
 
                 <p class="mb-4">
-                    Esto incluye tanto lo dicho por el presidente como por otros funcionarios, así como las preguntas de
-                    reporteros.
+                    Esto incluye lo dicho por el presidente, por otros funcionarios y otras intervenciones como las
+                    preguntas de reporteros. Después se omiten palabras comunes que no aportan mucha información.
+                    Puedes ver más información de las palabras omitidas en
+                    <a href="/sobre_este_sitio#palabras_omitidas">esta sección</a>.
                 </p>
             </div>
         </div>
@@ -241,7 +243,8 @@
 
         <footer class="pt-3 mt-4 text-body-secondary border-top">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="/aviso_de_privacidad" class="nav-link px-2 text-muted">Aviso de Privacidad</a></li>
+                <li class="nav-item"><a href="/aviso_de_privacidad" class="nav-link px-2 text-muted">Aviso de
+                    Privacidad</a></li>
                 <li class="nav-item"><a href="https://forms.gle/pt7wmwi5ZS12Nq979" class="nav-link px-2 text-muted">Contacto</a>
                 </li>
             </ul>
@@ -251,18 +254,10 @@
 </main>
 <script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-<script src="/js/posthog.js"></script>
-
 <script type="module">
-    import data from "/transcripts_data.json" with {type: 'json'};
+    // import data from "/transcripts_data.json" with {type: 'json'};
 
     let dateStr = null;
-
-    document.getElementById("transcript-date").addEventListener("change", syncSelectedDate);
-    document.getElementById("transcript-date-2").addEventListener("change", syncSelectedDate);
-
-    document.getElementById("visualize-conference-btn").addEventListener("click", navigateToSelectedDate);
-    document.getElementById("visualize-conference-btn-2").addEventListener("click", navigateToSelectedDate);
 
     function syncSelectedDate(event) {
         dateStr = event.target.value;
@@ -276,13 +271,12 @@
 
     function getTopWords() {
         const topWordsPath = "/graphs/top_words/" + dateStr + ".json";
-        console.log("will fetch: " + topWordsPath);
 
         fetch(topWordsPath)
             .then(response => response.json())
-            .then(data => {
+            .then(topWords => {
                 document.getElementById("top-words-list").innerHTML =
-                    "<strong>Palabras más mencionadas: </strong>" + data.join(", ");
+                    "<strong>Palabras más mencionadas: </strong>" + topWords.join(", ");
             })
             .catch(error => {
                 console.log(error);
@@ -290,71 +284,97 @@
     }
 
     window.onload = function () {
-        const imgDir = "/graphs/";
-        const wordCloudDir = imgDir + "wordclouds/";
-        const barChartDir = imgDir + "barcharts/";
+        document.getElementById("transcript-date").addEventListener("change", syncSelectedDate);
+        document.getElementById("transcript-date-2").addEventListener("change", syncSelectedDate);
 
-        console.log("window.location: " + window.location);
+        document.getElementById("visualize-conference-btn").addEventListener("click", navigateToSelectedDate);
+        document.getElementById("visualize-conference-btn-2").addEventListener("click", navigateToSelectedDate);
 
-        const pathNameParts = window.location.pathname.split('/');
-        if (pathNameParts.length === 3 && pathNameParts[1] === "conferencias_diarias") {
-            dateStr = pathNameParts[2];
-        }
+        fetch("/transcripts_data.json")
+            .then(response => response.json())
+            .then(transcriptsData => {
+                const imgDir = "/graphs/";
+                const wordCloudDir = imgDir + "wordclouds/";
+                const barChartDir = imgDir + "barcharts/";
 
-        if (dateStr === null) {
-            let date = new Date("2024-04-01");
-            dateStr = date.toISOString().split('T')[0];
+                const pathNameParts = window.location.pathname.split('/');
+                if (pathNameParts.length === 3 && pathNameParts[1] === "conferencias_diarias") {
+                    dateStr = pathNameParts[2];
+                }
 
-            const oneDayMillis = 86400000;
-            const maxPreviousDays = 7;
-            let previousDays = 0;
-            while (data[dateStr] === undefined || previousDays === maxPreviousDays) {
-                date = new Date(date.getTime() - oneDayMillis);
-                dateStr = date.toISOString().split('T')[0];
-                previousDays++;
-            }
-        }
+                if (dateStr === null) {
+                    let date = new Date();
+                    dateStr = date.toISOString().split('T')[0];
 
-        let conferenceData = data[dateStr];
-        if (conferenceData === undefined) {
-            alert("No se encontraron datos para la fecha seleccionada. Seleccione otra");
-            return;
-        }
+                    const oneDayMillis = 86400000;
+                    const maxPreviousDays = 7;
+                    let previousDays = 0;
+                    while (transcriptsData[dateStr] === undefined || previousDays === maxPreviousDays) {
+                        date = new Date(date.getTime() - oneDayMillis);
+                        dateStr = date.toISOString().split('T')[0];
+                        previousDays++;
+                    }
+                }
 
-        conferenceData = conferenceData[0] // TODO: Handle multiple conferences in one day
+                let conferenceData = transcriptsData[dateStr];
+                if (conferenceData === undefined) {
+                    alert("No se encontraron datos para la fecha seleccionada. Seleccione otra");
+                    return;
+                }
 
-        const date = new Date(dateStr + "T00:00:00.000-06:00");
-        const prettyDate = date.toLocaleDateString("es-mx", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-        });
-        document.getElementById("date-header").textContent = "Mañanera del " + prettyDate;
-        document.getElementById("transcript-date").value = dateStr;
-        document.getElementById("transcript-date-2").value = dateStr;
-        document.getElementById("top-words-list").innerHTML = "<strong>Palabras más mencionadas: </strong>" + getTopWords();
-        document.getElementById("title").innerHTML = "<strong>Título: </strong>" + conferenceData.title;
-        document.getElementById("url").textContent = conferenceData.url;
-        document.getElementById("url").href = conferenceData.url;
+                conferenceData = conferenceData[0] // TODO: Handle multiple conferences in one day
 
-        const wordCloud = document.getElementById('wordcloud');
-        const wordCloudLoader = document.getElementById('wordcloud-loader');
-        const barChart = document.getElementById('barchart');
-        const barChartLoader = document.getElementById('barchart-loader');
+                const date = new Date(dateStr + "T00:00:00.000-06:00");
+                const prettyDate = date.toLocaleDateString("es-mx", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                });
+                document.getElementById("date-header").textContent = "Mañanera del " + prettyDate;
+                document.getElementById("transcript-date").value = dateStr;
+                document.getElementById("transcript-date-2").value = dateStr;
+                document.getElementById("top-words-list").innerHTML = "<strong>Palabras más mencionadas: </strong>" + getTopWords();
+                document.getElementById("title").innerHTML = "<strong>Título: </strong>" + conferenceData.title;
+                document.getElementById("url").textContent = conferenceData.url;
+                document.getElementById("url").href = conferenceData.url;
 
-        wordCloud.onload = function () {
-            wordCloudLoader.classList.add("visually-hidden");
-            wordCloud.hidden = false;
-        };
-        barChart.onload = function () {
-            barChartLoader.classList.add("visually-hidden");
-            barChart.hidden = false;
-        };
+                const wordCloud = document.getElementById('wordcloud');
+                const wordCloudLoader = document.getElementById('wordcloud-loader');
+                const barChart = document.getElementById('barchart');
+                const barChartLoader = document.getElementById('barchart-loader');
 
-        wordCloud.src = wordCloudDir + dateStr + ".png";
-        barChart.src = barChartDir + dateStr + ".png";
+                wordCloud.onload = function () {
+                    wordCloudLoader.classList.add("visually-hidden");
+                    wordCloud.hidden = false;
+                };
+                barChart.onload = function () {
+                    barChartLoader.classList.add("visually-hidden");
+                    barChart.hidden = false;
+                };
+
+                wordCloud.src = wordCloudDir + dateStr + ".png";
+                barChart.src = barChartDir + dateStr + ".png";
+            })
+            .catch(error => {
+                console.log(error);
+            })
     };
+</script>
+
+<script src="/js/posthog.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MK4SN1MQNL"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MK4SN1MQNL');
 </script>
 </body>
 </html>

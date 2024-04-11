@@ -19,6 +19,14 @@
       {
         "source": "/autor/",
         "destination": "/autor.html"
+      },
+      {
+        "source": "/busqueda",
+        "destination": "/busqueda.txt"
+      },
+      {
+        "source": "/sitemap.txt",
+        "destination": "/sitemap.txt"
       }
     ]
   }

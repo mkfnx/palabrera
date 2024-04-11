@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es-mx" data-bs-theme="dark">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="/js/color-modes.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Visualizaciones de las palabras más mencionadas en las mañaneras, las conferencias de prensa del presidente de México, Andrés Manuel López Obrador (AMLO)">
+    <meta name="keywords" content="Mañanera, AMLO, Conferencia Presidente, Visualización de Datos, Nube de Palabras">
+    <meta name="author" content="Miguel López @mkfnx">
+    <title>Palabrera - Búsqueda de Palabras en mañaneras de AMLO</title>
+
+
+    <link rel="stylesheet" href="/css/css@3" type="text/css">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous" type="text/css">
+
+    <link rel="stylesheet" href="/css/jumbotron.css" type="text/css">
+
+    <meta name="theme-color" content="#712cf9">
+
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+    </symbol>
+</svg>
+
+<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+            id="bd-theme"
+            type="button"
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+            <use href="#circle-half"></use>
+        </svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                    aria-pressed="false">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#sun-fill"></use>
+                </svg>
+                Light
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                    aria-pressed="false">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#moon-stars-fill"></use>
+                </svg>
+                Dark
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                    aria-pressed="true">
+                <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                    <use href="#circle-half"></use>
+                </svg>
+                Auto
+                <svg class="bi ms-auto d-none" width="1em" height="1em">
+                    <use href="#check2"></use>
+                </svg>
+            </button>
+        </li>
+    </ul>
+</div>
+
+<main>
+    <div class="container py-4">
+        <nav class="navbar navbar-expand-lg bg-light-subtle">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Palabrera - Mañanera en Palabras</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link" href="/conferencias_diarias">Conferencias diarias</a>
+                        <a class="nav-link active" href="/busqueda">Búsqueda</a>
+                        <a class="nav-link" href="/sobre_este_sitio">Sobre este sitio</a>
+                        <a class="nav-link" href="/autor">Autor</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="px-4 my-4 text-center">
+            <h3 class="display-6 fw-bold">Busca las palabras más mencionadas en las mañaneras de AMLO</h3>
+            <div class="col-lg-10 mx-auto">
+                <p class="mb-4">
+                    Ingresa el término a buscar y se mostrarán enlaces a las páginas con el análisis de las conferencias
+                    en las que esa palabra fue de las más mencionadas.
+                </p>
+            </div>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <h4>Notas sobre la búsqueda</h4>
+
+            <ul>
+                <li>Recuerda que se omiten palabras comunes pero no relevantes como artículos o preposiciones.
+                    <br>Si por ejemplo buscas "El Universal", la búsqueda debe ser solo por "universal".
+                </li>
+                <li>
+                    Ningún término es de más de dos palabras.
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <h2 id="date-header" class="display-6 fw-bold"></h2>
+
+            <div class="col-md-6 container-fluid">
+                <div class="col-auto mb-3">
+                    <label for="search-term" class="form-label">Ingresa la palabra a buscar:</label>
+                    <input id="search-term" type="text" class="form-control" name="search">
+                </div>
+                <div class="col-auto">
+                    <button id="search-btn" type="button" class="btn btn-primary" disabled>Buscar</button>
+                </div>
+            </div>
+
+            <div class="row align-items-md-stretch">
+                <div class="col-md-8 container-fluid">
+                    <div class="h-100 p-5 text-bg-tertiary rounded-3">
+                        <h2 id="search-title">Resultados:</h2>
+                        <div class="card" style="width: 18rem;">
+                            <ul id="results-container" class="list-group list-group-flush">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">¿Para qué sirve esto?</h3>
+            <div class="col-lg-10 mx-auto">
+                <p class="lead mb-4">
+                    Para identificar rápidamente los temas tratados en las mañaneras del presidente AMLO.
+                </p>
+                <p class="lead mb-4">
+                    Las visualizaciones mostradas son herramientas muy sencillas de exploración de datos. Para obtener
+                    información completa sobre los temas mencionados en las conferencias se recomienda visitar la fuente
+                    de las mismas, debajo de las gráficas puedes encontrar el enlace a la transcripción oficial de cada
+                    conferencia.
+                </p>
+                <p class="lead mb-4">
+                    Puedes obtener más información sobre temas de análisis y visualización
+                    de datos en las siguientes fuentes:
+                </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="https://en.wikipedia.org/wiki/Tag_cloud">Nubes de Palabras -
+                        Wikipedia en inglés</a></li>
+                    <li class="list-group-item"><a href="https://en.wikipedia.org/wiki/Topic_model">Topic Modeling -
+                        Wikipedia en inglés</a></li>
+                    <li class="list-group-item"><a href="https://tagcrowd.com/faq.html#whatis">TagCrowd - Generador y
+                        ejemplos de nubes de palabras</a></li>
+                    <li class="list-group-item"><a href="https://www.tiktok.com/@mkfnx">Mi Cuenta de TikTok</a></li>
+                    <li class="list-group-item"><a href="https://beacons.ai/mkfnx">Mi página de enlaces recomendados</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="pt-3 mt-4 text-body-secondary border-top">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="/aviso_de_privacidad" class="nav-link px-2 text-muted">Aviso de
+                    Privacidad</a></li>
+                <li class="nav-item"><a href="https://forms.gle/pt7wmwi5ZS12Nq979" class="nav-link px-2 text-muted">Contacto</a>
+                </li>
+            </ul>
+            <p class="text-center text-muted">© Palabrera - Mañanera en Palabras 2024</p>
+        </footer>
+    </div>
+</main>
+<script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<script type="module">
+    let data = null;
+    const searchField = document.getElementById("search-term");
+
+    function sendAnalyticsEvent(eventName, params) {
+        gtag('event', eventName, params);
+        posthog.capture(eventName, params);
+    }
+
+    function cleanSearchTerm(searchTerm) {
+        searchTerm = searchTerm.trim().toLowerCase();
+
+        const chars = {
+            'á': 'a',
+            'é': 'e',
+            'í': 'i',
+            'ó': 'o',
+            'ú': 'u'
+        };
+
+        return searchTerm.replace(/[áéíóú]/g, m => chars[m]);
+    }
+
+    function onSearchClicked() {
+        sendAnalyticsEvent('search_clicked', {});
+
+        let searchTerm = searchField.value
+
+        if (searchTerm === undefined || searchTerm.length === 0) {
+            sendAnalyticsEvent('search_invalid_term', {
+                'search_term': searchTerm
+            });
+            return;
+        }
+
+        searchTerm = cleanSearchTerm(searchTerm);
+        sendAnalyticsEvent('search_term', {
+            'search_term': searchTerm
+        });
+
+        const resultsContainer = document.getElementById("results-container");
+        const searchTitle = document.getElementById("search-title");
+        const searchResults = data[searchTerm];
+
+        resultsContainer.innerHTML = "";
+        if (searchResults === undefined || searchResults.length === 0) {
+            sendAnalyticsEvent('search_empty', {
+                'search_term': searchTerm
+            });
+            alert("No hay resultados para su término de búsqueda, intente otro.");
+            return;
+        }
+        sendAnalyticsEvent('search_hit', {
+            'search_term': searchTerm
+        });
+
+        searchTitle.textContent = searchResults.length + " resultados de búsqueda sobre \"" + searchTerm + "\":"
+        searchResults.sort();
+        searchResults.forEach((item, index) => {
+            const resultItem = document.createElement("li");
+            resultItem.classList.add("list-group-item")
+            resultItem.innerHTML = "<a href=\"/conferencias_diarias/" + item + "\">Conferencia del " + item + "</a>";
+            resultsContainer.append(resultItem);
+        });
+    }
+
+    fetch("/search_index.json")
+        .then(response => response.json())
+        .then(searchData => {
+            data = searchData;
+            const searchButton = document.getElementById("search-btn");
+            searchButton.removeAttribute("disabled");
+            searchButton.addEventListener("click", onSearchClicked);
+            searchField.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    onSearchClicked();
+                }
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        })
+</script>
+
+<script src="/js/posthog.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MK4SN1MQNL"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MK4SN1MQNL');
+</script>
+</body>
+</html>

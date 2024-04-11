@@ -10,7 +10,7 @@
           content="Visualizaciones de las palabras más mencionadas en las mañaneras, las conferencias de prensa del presidente de México, Andrés Manuel López Obrador (AMLO)">
     <meta name="keywords" content="Mañanera, AMLO, Conferencia Presidente, Visualización de Datos, Nube de Palabras">
     <meta name="author" content="Miguel López @mkfnx">
-    <title>Palabrera - Visualización de las palabras más usadas en las conferencias del presidente de México</title>
+    <title>Palabrera - Sobre el autor</title>
 
 
     <link rel="stylesheet" href="/css/css@3">
@@ -105,6 +105,7 @@
                     <div class="navbar-nav">
                         <a class="nav-link" aria-current="page" href="/">Inicio</a>
                         <a class="nav-link" href="/conferencias_diarias">Conferencias diarias</a>
+                        <a class="nav-link" href="/busqueda">Búsqueda</a>
                         <a class="nav-link" href="/sobre_este_sitio">Sobre este sitio</a>
                         <a class="nav-link active" href="/autor">Autor</a>
                     </div>
@@ -120,7 +121,8 @@
                 </p>
 
                 <p class="lead mb-4">
-                    Soy Ingeniero de Software y <a href="https://tiktok.com/@mkfnx">curador/creador de contenido</a> sobre tecnologías de la información.
+                    Soy Ingeniero de Software y <a href="https://tiktok.com/@mkfnx">curador/creador de contenido</a>
+                    sobre tecnologías de la información.
                 </p>
 
                 <p class="lead mb-4">
@@ -146,7 +148,8 @@
                         <a href="https://infografia-netflix.streamlit.app/">Infografía de mis datos de Netflix</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="https://calculadora-pareja.streamlit.app/">Calculadora de pareja "económicamente ideal"</a>
+                        <a href="https://calculadora-pareja.streamlit.app/">Calculadora de pareja "económicamente
+                            ideal"</a>
                     </li>
                 </ul>
             </div>
@@ -155,7 +158,8 @@
 
         <footer class="pt-3 mt-4 text-body-secondary border-top">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="/aviso_de_privacidad" class="nav-link px-2 text-muted">Aviso de Privacidad</a></li>
+                <li class="nav-item"><a href="/aviso_de_privacidad" class="nav-link px-2 text-muted">Aviso de
+                    Privacidad</a></li>
                 <li class="nav-item"><a href="https://forms.gle/pt7wmwi5ZS12Nq979" class="nav-link px-2 text-muted">Contacto</a>
                 </li>
             </ul>
@@ -167,7 +171,17 @@
 
 <script src="/js/posthog.js"></script>
 
-<script type="module">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MK4SN1MQNL"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MK4SN1MQNL');
 </script>
 </body>
 </html>
